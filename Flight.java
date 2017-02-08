@@ -64,15 +64,16 @@ public class Flight implements Comparable<Flight> {
     // compare check destiation first then check source
     // *************** CONTAIN BUGS **************
     // Forexamples, same airline
-//    public int compareTo(Flight target) {
-//        if (destination.equals(target.destination))
-//            return source.compareToIgnoreCase(target.source);
-//        else return destination.compareToIgnoreCase(target.destination);
-//    }
-    //CompareTo call flightStr() to compare 
     public int compareTo(Flight target) {
-        return flightStr().compareTo(target.flightStr());
+        if (destination.equals(target.destination))
+            return source.compareToIgnoreCase(target.source);
+        //compare base on source
+        else return source.compareToIgnoreCase(target.source);
     }
+    //CompareTo call flightStr() to compare 
+//    public int compareTo(Flight target) {
+//        return flightStr().compareTo(target.flightStr());
+//    }
 
     // linear search 
     // Use class T so the method can use with any input
@@ -138,7 +139,6 @@ public class Flight implements Comparable<Flight> {
                 data[position] = data[position - 1];
                 position--;
             }
-
             data[position] = key;
         }
     }
